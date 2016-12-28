@@ -1,0 +1,35 @@
+{
+  "name": "json-pather",
+  "version": "1.0.0",
+  "description": "Tool for getting the dot notation path to Json values",
+  "main": "index.js",
+  "engines": {
+    "node": "4.4.4",
+    "npm": "2.15.1"
+  },
+  "dependencies": {
+    "live-server": "^0.9.2",
+    "angular-ui-router": "^0.3.2",
+    "http-server": "^0.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -a localhost -c-1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NomanTrips/json-pather.git"
+  },
+  "keywords": [
+    "Json",
+    "dot",
+    "notation"
+  ],
+  "author": "Brian Scott",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NomanTrips/json-pather/issues"
+  },
+  "homepage": "https://github.com/NomanTrips/json-pather#readme"
+}

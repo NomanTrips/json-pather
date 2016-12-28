@@ -1,0 +1,37 @@
+<md-toolbar class="md-primary">
+	<div class="md-toolbar-tools" layout-align="center center">
+		<md-icon style="width:36px;height:36px;" md-svg-icon="json">
+		</md-icon>
+		<h3 style="padding-left:5px;padding-top:10px;vertical-align: text-top;" flex>
+			<span>Json Pather</span>
+			<br />
+			<span style="font-size:12px;vertical-align: text-top;">Dot notation path explorer</span>
+		</h3>
+		<md-button style="float:right;" class="md-icon-button md-primary md-hue-1 md-raised" aria-label="About" ng-click="about.navToAbout()">
+			<md-tooltip>
+				About
+			</md-tooltip>
+			<md-icon md-svg-icon="about"></md-icon>
+		</md-button>
+	</div>
+</md-toolbar>
+<md-content layout-fill flex layout-margin>
+	<div layout="column" layout-align="center center">
+		<h3 flex>
+			About:
+		</h3>
+		<span flex>
+        <p>
+        Json pather is built in 
+        <a href="https://angular.io/">Angular</a>
+         with <a href="https://material.angularjs.org/latest/">Angular material</a> for the UI.
+         </p>
+    </span>
+		<br />
+		<span flex>
+        <p>
+        Report a bug or other feedback: <a href="https://github.com/NomanTrips/json-pather">Github page</a>
+        </p>
+    </span>
+	</div>
+</md-content>

@@ -1,0 +1,49 @@
+<md-toolbar class="md-primary">
+	<div class="md-toolbar-tools" layout-align="center center">
+		<md-icon style="width:36px;height:36px;" md-svg-icon="json">
+		</md-icon>
+		<h3 style="padding-left:5px;padding-top:10px;vertical-align: text-top;" flex>
+			<span>Json Pather</span>
+			<br />
+			<span style="font-size:12px;vertical-align: text-top;">Dot notation path explorer</span>
+		</h3>
+		<md-button style="float:right;" class="md-icon-button md-primary md-hue-1 md-raised" aria-label="About" ng-click="jsonPath.navToAbout()">
+			<md-tooltip>
+				About
+			</md-tooltip>
+			<md-icon md-svg-icon="about"></md-icon>
+		</md-button>
+	</div>
+</md-toolbar>
+<md-content layout-fill flex>
+	<div layout="column" layout-align="center">
+		<div flex="100" layout-padding>
+			<form name="jsonInput">
+				<md-input-container class="md-block">
+					<label>Paste Json here:</label>
+					<textarea ng-model="jsonPath.inputJson" rows="5" md-select-on-focus="" md-no-autogrow></textarea>
+				</md-input-container>
+			</form>
+		</div>
+		<div flex="100" layout="row" layout-align="center center">
+			<md-button class="md-raised md-accent md-hue-1" ng-click="jsonPath.processJson()">Process</md-button>
+		</div>
+
+		<section>
+			<md-subheader class="md-primary" ng-show="jsonPath.isJsonProcessed">
+				<div flex="100">
+					<md-input-container class="md-block" style="line-height:24px">
+						<label>Click json value below to show path:</label>
+						<input ng-model="jsonPath.path" class="md-warn">
+					</md-input-container>
+				</div>
+			</md-subheader>
+
+			<div flex="100" ng-show="jsonPath.isJsonProcessed" layout-padding>
+				<pre>
+					<div ng-bind-html="jsonPath.jsonHtml" compile-template=""></div>
+				</pre>
+			</div>
+		</section>
+	</div>
+</md-content>
