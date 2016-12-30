@@ -30,11 +30,11 @@
 		</div>
 
 		<section>
-			<md-subheader class="md-primary" ng-show="jsonPath.isJsonProcessed">
+			<md-subheader class="md-warn" ng-show="jsonPath.isJsonProcessed" >
 				<div flex="100">
 					<md-input-container class="md-block" style="line-height:24px">
 						<label>Click json value below to show path:</label>
-						<input ng-model="jsonPath.path" class="md-warn">
+						<input ng-model="jsonPath.path" style="color:OrangeRed;">
 					</md-input-container>
 				</div>
 			</md-subheader>
