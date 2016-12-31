@@ -30,13 +30,25 @@
 		</div>
 
 		<section>
-			<md-subheader class="md-warn" ng-show="jsonPath.isJsonProcessed" >
-				<div flex="100">
-					<md-input-container class="md-block" style="line-height:24px">
-						<label>Click json value below to show path:</label>
-						<input ng-model="jsonPath.path" style="color:OrangeRed;">
-					</md-input-container>
+			<md-subheader  ng-show="jsonPath.isJsonProcessed">
+				<div flex="100" layout="row">
+					<div flex="95">
+						<md-input-container class="md-block" style="line-height:24px">
+							<label>Click json value below to show path:</label>
+							<input ng-model="jsonPath.path" style="color:OrangeRed;">
+
+						</md-input-container>
+					</div>
+					<div flex="5">
+						<md-button class="md-icon-button" ngclipboard data-clipboard-text={{jsonPath.path}}>
+							<md-tooltip>
+								Copy to clipboard
+							</md-tooltip>
+							<md-icon md-svg-icon="copy"></md-icon>
+						</md-button>
+					</div>
 				</div>
+
 			</md-subheader>
 
 			<div flex="100" ng-show="jsonPath.isJsonProcessed" layout-padding>

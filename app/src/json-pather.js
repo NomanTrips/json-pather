@@ -1,6 +1,6 @@
 'use strict';
 
-var jsonPather = angular.module('jsonPather', ['ngSanitize', 'ngMaterial', 'ui.router',])
+var jsonPather = angular.module('jsonPather', ['ngSanitize', 'ngMaterial', 'ui.router', 'ngclipboard'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('');
 
@@ -34,6 +34,7 @@ var jsonPather = angular.module('jsonPather', ['ngSanitize', 'ngMaterial', 'ui.r
 .config(function ($mdThemingProvider, $mdIconProvider) {
   $mdIconProvider
     .icon("json", "./assets/svg/json-file.svg", 48)
+    .icon("copy", "./assets/svg/copy.svg", 48)
     .icon("about", "./assets/svg/about.svg", 48);
     
   var lightCyanMap = $mdThemingProvider.extendPalette('cyan', {
