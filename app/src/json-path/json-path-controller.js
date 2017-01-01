@@ -1,12 +1,12 @@
-jsonPather.controller('JsonPathCtrl', function ($http, $templateCache, $sce, $compile, $interpolate, $location, $mdToast) {
+jsonPather.controller('JsonPathCtrl', function ($sce, $location, $mdToast) {
   ctrl = this;
   ctrl.inputJson;
   ctrl.isJsonProcessed = false;
   ctrl.path = '';
 
   ctrl.showPath = function (offset) {
-    var path = ctrl.paths.find(x => x.offset === offset);
-    ctrl.path = path.path;
+    var pathObj = ctrl.paths.find(x => x.offset === offset);
+    ctrl.path = pathObj.path;
   };
 
   ctrl.navToAbout = function () {
@@ -14,7 +14,7 @@ jsonPather.controller('JsonPathCtrl', function ($http, $templateCache, $sce, $co
     $location.path(url);
   }
 
-  ctrl.syntaxHighlight = function (json) {
+  ctrl.parseJsonToHtml = function (json) {
     var realOffset;
     var currentStrIndex = 0;
     if (typeof json != 'string') {
@@ -36,20 +36,19 @@ jsonPather.controller('JsonPathCtrl', function ($http, $templateCache, $sce, $co
         cls = 'null';
       }
 
-      realOffset = originalJson.indexOf(match, currentStrIndex);
+      realOffset = originalJson.indexOf(match, currentStrIndex); // offset later used to map the value to the corresponding path from objectToPaths
       currentStrIndex = realOffset + match.length;
       return "<span ng-click='jsonPath.showPath(" + realOffset + ")' class=" + cls + ">" + match + "</span>";
     });
   }
 
   ctrl.paths;
-  ctrl.offsets;
 
   ctrl.objectToPaths = function (data) {
     var validId = /^[a-z_$][a-z0-9_$]*$/i;
     var result = [];
     var dataString = JSON.stringify(data, undefined, 2);
-    var offset;
+    var offset; // offset used later to map paths to json values in html version of json
     var currentStrIndex = 0;
     doIt(data, "");
     return result;
@@ -104,7 +103,7 @@ jsonPather.controller('JsonPathCtrl', function ($http, $templateCache, $sce, $co
       return;
     }
     ctrl.paths = ctrl.objectToPaths(jsonObj);
-    var html = ctrl.syntaxHighlight(jsonObj);
+    var html = ctrl.parseJsonToHtml(jsonObj);
     ctrl.jsonHtml = $sce.trustAsHtml(html);
     ctrl.isJsonProcessed = true;
   }
