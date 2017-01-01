@@ -38,7 +38,12 @@ jsonPather.controller('JsonPathCtrl', function ($sce, $location, $mdToast) {
 
       realOffset = originalJson.indexOf(match, currentStrIndex); // offset later used to map the value to the corresponding path from objectToPaths
       currentStrIndex = realOffset + match.length;
-      return "<span ng-click='jsonPath.showPath(" + realOffset + ")' class=" + cls + ">" + match + "</span>";
+      if (cls === 'string') {
+        return "<span ng-click='jsonPath.showPath(" + realOffset + ")' class=" + cls + ">" + match + "</span>";
+      } else {
+        return "<span class=" + cls + ">" + match + "</span>";
+      }
+
     });
   }
 
@@ -77,6 +82,7 @@ jsonPather.controller('JsonPathCtrl', function ($sce, $location, $mdToast) {
               }
             } else {
               doIt(data[p], s + "[\"" + p + "\"]");
+              console.log(s + ' ' + p);
             }
           }
         }
