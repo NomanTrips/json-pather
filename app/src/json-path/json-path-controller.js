@@ -39,7 +39,7 @@ jsonPather.controller('JsonPathCtrl', function ($sce, $location, $mdToast) {
       realOffset = originalJson.indexOf(match, currentStrIndex); // offset later used to map the value to the corresponding path from objectToPaths
       currentStrIndex = realOffset + match.length;
       if (cls === 'string') {
-        return "<span ng-click='jsonPath.showPath(" + realOffset + ")' class=" + cls + ">" + match + "</span>";
+        return "<md-button ng-click='jsonPath.showPath(" + realOffset + ")' class='md-small md-primary'>" + match + "</md-button>";
       } else {
         return "<span class=" + cls + ">" + match + "</span>";
       }
