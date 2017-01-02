@@ -1,4 +1,4 @@
-jsonPather.controller('JsonPathCtrl', function ($sce, $location, $mdToast) {
+jsonPather.controller('JsonPathCtrl', function ($http, $sce, $location, $mdToast) {
   ctrl = this;
   ctrl.inputJson;
   ctrl.isJsonProcessed = false;
@@ -113,6 +113,26 @@ jsonPather.controller('JsonPathCtrl', function ($sce, $location, $mdToast) {
     ctrl.jsonHtml = $sce.trustAsHtml(html);
     ctrl.isJsonProcessed = true;
   }
+
+  ctrl.initPageWithExample = function () {
+    $http({
+      method: 'GET',
+      url: './assets/example.json'
+    }).then(function successCallback(response) {
+      ctrl.inputJson = JSON.stringify(response.data, undefined, 2);
+      jsonObj = response.data;
+      ctrl.paths = ctrl.objectToPaths(jsonObj);
+      ctrl.path = ctrl.paths[3].path;
+      var html = ctrl.parseJsonToHtml(jsonObj);
+      ctrl.jsonHtml = $sce.trustAsHtml(html);
+      ctrl.isJsonProcessed = true;
+    }, function errorCallback(response) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+    });
+  }
+
+  ctrl.initPageWithExample();
 
 })
 
