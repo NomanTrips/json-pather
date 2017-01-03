@@ -43,12 +43,7 @@ jsonPather.controller('JsonPathCtrl', function ($http, $sce, $location, $mdToast
       url: './assets/example.json'
     }).then(function successCallback(response) {
       ctrl.inputJson = JSON.stringify(response.data, undefined, 2);
-      jsonObj = response.data;
-      ctrl.paths = JsonPaths.objectToPaths(jsonObj);
-      ctrl.path = ctrl.paths[3].path;
-      var html = JsonToHtml.parseJsonToHtml(jsonObj);
-      ctrl.jsonHtml = $sce.trustAsHtml(html);
-      ctrl.isJsonProcessed = true;
+      ctrl.processJson();
     }, function errorCallback(response) {
       // called asynchronously if an error occurs
       // or server returns response with an error status.
