@@ -1,4 +1,4 @@
-jsonPather.controller('JsonPathCtrl', function ($http, $sce, $location, $mdToast) {
+jsonPather.controller('JsonPathCtrl', function ($http, $sce, $location, $mdToast, JsonToHtml) {
   ctrl = this;
   ctrl.inputJson;
   ctrl.isJsonProcessed = false;
@@ -109,7 +109,7 @@ jsonPather.controller('JsonPathCtrl', function ($http, $sce, $location, $mdToast
       return;
     }
     ctrl.paths = ctrl.objectToPaths(jsonObj);
-    var html = ctrl.parseJsonToHtml(jsonObj);
+    var html = JsonToHtml.parseJsonToHtml(jsonObj);
     ctrl.jsonHtml = $sce.trustAsHtml(html);
     ctrl.isJsonProcessed = true;
   }
@@ -123,7 +123,7 @@ jsonPather.controller('JsonPathCtrl', function ($http, $sce, $location, $mdToast
       jsonObj = response.data;
       ctrl.paths = ctrl.objectToPaths(jsonObj);
       ctrl.path = ctrl.paths[3].path;
-      var html = ctrl.parseJsonToHtml(jsonObj);
+      var html = JsonToHtml.parseJsonToHtml(jsonObj);
       ctrl.jsonHtml = $sce.trustAsHtml(html);
       ctrl.isJsonProcessed = true;
     }, function errorCallback(response) {
